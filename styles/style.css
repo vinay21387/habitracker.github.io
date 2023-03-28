@@ -1,0 +1,218 @@
+* {/* Reset CSS. */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root{
+    font-size: clamp(0.1rem, 0.1rem + 3.5vw, 1rem);
+
+    --success-color:rgba(0, 212, 8, 0.7);
+    --failure-color:rgba(255, 0, 0, 0.6);
+
+    --bg-color: #D8E7CC;
+    --calendar-bg-color: white;
+    --number-color: rgb(47, 54, 46);
+    --number-color-transparent: rgb(47, 54, 46, 0.5);
+    --svg-filter: none;
+}
+
+.dark{
+    --bg-color: #1B1B1B;
+    --calendar-bg-color: #2C3330;
+    --number-color: rgb(242, 255, 240);
+    --number-color-transparent: rgb(242, 255, 240, 0.5);
+    --svg-filter: invert(100%);
+}
+
+body{
+    color: var(--number-color);
+    background-color:var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    margin-top:    10vh;
+    margin-bottom: 5vh; 
+    transition: 0.5s ease-out;
+}
+
+#success-percentage{
+    display: flex;
+    align-items: baseline;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 0.2rem;
+}
+
+#success-percentage-number{
+    text-shadow: 0px 0px 0.625rem rgba(0, 0, 0, 0.18);
+    font-size: 4.5rem;
+}
+#success-percentage-symbol{
+    font-size: 1.875rem;
+}
+
+#calendar-wrapper {
+    max-width: 100%;
+    background-color: var(--calendar-bg-color); 
+    box-shadow: 0rem 0rem 2rem 0.25rem rgba(0, 0, 0, 0.09);
+    border-radius: 3.8%;
+}
+
+button{
+    background-color: transparent;
+    border-color: transparent;
+    user-select: none;
+}
+
+
+@media (hover: hover) {
+    button:hover{
+        cursor: pointer;
+        transition: 0.1s ease-out;
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+}
+
+.bttn-svg{
+    filter: var(--svg-filter);
+    width: 1.625rem; 
+    opacity: 0.8;
+}
+
+
+#calendar-header{ /* left/right arrow navigation and month name */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+
+    justify-content: space-between;
+    padding: 1.25rem;
+}
+
+#month-name{
+    font-size: 1.56rem;
+}
+
+.calendar {
+    display: grid;
+    
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.187rem;
+    margin: 0 2.75rem;
+    justify-items: center;
+    align-items: center; 
+    
+}
+
+
+.day-button{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Lato', sans-serif;
+    font-size: 1.125rem;
+    width: 2.375rem;
+    height: 2.375rem;
+    background-color: transparent;
+    border: 0.08rem;
+    border-color: transparent;
+  
+    border-radius: 40%;
+    padding: 0.645rem;
+    
+    color: var(--number-color);
+    font-weight: normal;
+    
+
+    position: relative;
+    z-index: auto;
+}
+
+.day-button-today {
+    border: var(--number-color-transparent) solid 0.12rem;
+    color: var(--number-color);
+    font-weight: bolder;
+}
+
+.day-button-today.success-state {
+    outline: 0.12rem var(--success-color) solid;
+    box-shadow: 0 0 1rem var(--success-color);
+    border: var(--success-color) solid 0.12rem;
+    font-weight: bolder;
+}
+
+.day-button-past {
+    color: var(--number-color-transparent);
+    font-weight: bold;
+}
+
+.day-button.success-state{
+    border-style: solid;
+    border-color: var(--success-color);
+}
+.day-button.failure-state{
+    border-style: solid;
+    border-color: var(--failure-color);
+}
+
+
+
+
+.day-button:disabled {
+    position: absolute;
+    z-index: -1;
+}
+
+.day-of-week{/* Su Mo Tu We Th Fr Sa*/
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 0.75rem;
+    list-style: none;
+    text-align: center;
+    opacity: 0.3;
+}
+
+#calendar-footer{/* trash can bttn; streak count display; dark mode bttn */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+#streak{
+    opacity: 1;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    transition: 0.5s ease-out;
+}
+
+#streak.invisible{
+    opacity: 0;
+}
+
+
+
+
+#credits{
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    position: fixed;
+    bottom: 0.2rem;
+    left:0.2rem
+}
+
+#credits a{
+    color: #a144ff;
+}
+#credits:hover{
+    transition: 0.1s;
+    opacity: 1;
+}
